@@ -6,12 +6,15 @@ import (
 	"testing"
 )
 
-func TestNewCampaign(t *testing.T) {
-	contacts := []Contact{
+var (
+	contacts = []Contact{
 		{Email: "teste@uorak.com"},
 	}
-	id := xid.New().String()
-	campaign := NewCampaign(id, "Test Campaign", "Test Content", contacts)
+	id       = xid.New().String()
+	campaign = NewCampaign(id, "Test Campaign", "Test Content", contacts)
+)
+
+func TestNewCampaign(t *testing.T) {
 
 	assert.NotNil(t, campaign.ID, "expected campaign id to be created")
 	assert.Equal(t, "Test Campaign", campaign.Name, "expected Name to be 'Test Campaign'")
