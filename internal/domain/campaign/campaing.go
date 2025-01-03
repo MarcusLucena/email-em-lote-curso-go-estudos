@@ -17,12 +17,12 @@ type Campaign struct {
 	Contacts  []Contact
 }
 
-func NewCampaign(id, name, content string, contacts []Contact) *Campaign {
+func NewCampaign(id, name, content string, contacts []Contact) (*Campaign, error) {
 	return &Campaign{
 		ID:        xid.New().String(),
 		Name:      name,
 		CreatedOn: time.Now(),
 		Content:   content,
 		Contacts:  contacts,
-	}
+	}, nil
 }

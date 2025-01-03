@@ -10,8 +10,8 @@ var (
 	contacts = []Contact{
 		{Email: "teste@uorak.com"},
 	}
-	id       = xid.New().String()
-	campaign = NewCampaign(id, "Test Campaign", "Test Content", contacts)
+	id          = xid.New().String()
+	campaign, _ = NewCampaign(id, "Test Campaign", "Test Content", contacts)
 )
 
 func TestNewCampaign(t *testing.T) {
