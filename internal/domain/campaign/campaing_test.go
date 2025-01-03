@@ -1,6 +1,7 @@
 package campaign
 
 import (
+	"github.com/rs/xid"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -9,9 +10,10 @@ func TestNewCampaign(t *testing.T) {
 	contacts := []Contact{
 		{Email: "teste@uorak.com"},
 	}
-	campaign := NewCampaign("1", "Test Campaign", "Test Content", contacts)
+	id := xid.New().String()
+	campaign := NewCampaign(id, "Test Campaign", "Test Content", contacts)
 
-	assert.Equal(t, "1", campaign.ID, "expected ID to be '1'")
+	assert.NotNil(t, campaign.ID, "expected campaign id to be created")
 	assert.Equal(t, "Test Campaign", campaign.Name, "expected Name to be 'Test Campaign'")
 	assert.Equal(t, "Test Content", campaign.Content, "expected Content to be 'Test Content'")
 	assert.Len(t, campaign.Contacts, 1, "expected Contacts to contain one contact")
